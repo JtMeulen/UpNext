@@ -1,0 +1,15 @@
+{
+  "name": "upnext",
+  "version": "1.0.0",
+  "description": "Movie search and append to watchlist SPA",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joey ter Meulen",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2"
+  }
+}
