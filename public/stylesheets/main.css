@@ -1,0 +1,71 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    margin: auto;
+    width: 90%;
+}
+
+#found-movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}
+
+#found-movies div {
+    flex-basis: 200px;
+    border: solid green 1px;
+    margin: 25px;
+}
+
+#found-movies div:hover {
+    cursor: pointer;
+}
+
+#found-movies div img {
+    width: 100%;
+}
+
+.modal {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.7); 
+}
+
+#popup-box {
+    /*content*/
+    padding: 30px;
+    color: white;
+    /*background*/
+    background: #121a28;
+    /*positioning*/
+    position: absolute;
+    margin: auto;
+    border: 2px solid black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%;
+    width: 70%;
+}
+
+#close-popup {
+    opacity: 0.5;
+    float: right;
+    padding: 15px;
+}
+
+#close-popup:hover {
+    opacity: 1;
+    cursor: pointer;
+}
