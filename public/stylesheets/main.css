@@ -1,11 +1,70 @@
+/***********************/
+/*    GENERAL STYLES   */
+/***********************/
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans');
+
 html, body {
+    /*page styles*/
     margin: 0;
     padding: 0;
+    height: 100%;
+    /*background image*/
+    background: linear-gradient(125deg, black, #000f28);
+    background-image: url("https://i.pinimg.com/originals/25/12/ec/2512ece2ee4bb87219577163fb77b52c.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    /*general settings*/
+    color: white;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
+#content-container {
+    width: 50%;
+    background: #081e44;
+    margin: 0 auto;
+    min-height: 100%;
+}
+
+/***********************/
+/*     HEADER STYLES   */
+/***********************/
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+header h4, header ul{
+    margin: 10px 25px;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+}
+
+header ul li {
+    margin-left: 25px;
+}
+
+/***********************/
+/*     HERO STYLES     */
+/***********************/
+#hero {
+    margin: 50px;
+}
+
+#hero h1 {
+    font-size: 3em;
+}
+
+/***********************/
+/*  BOTTOM CONTAINERS  */
+/***********************/
+
 .container{
-    margin: auto;
-    width: 90%;
+    padding: 20px;
 }
 
 #found-movies {
@@ -16,9 +75,9 @@ html, body {
 }
 
 #found-movies div {
-    flex-basis: 200px;
+    flex-basis: 160px;
     border: solid green 1px;
-    margin: 25px;
+    margin: 15px 5px 0 5px;
 }
 
 #found-movies div:hover {
@@ -28,6 +87,10 @@ html, body {
 #found-movies div img {
     width: 100%;
 }
+
+/***********************/
+/*       POPUP BOX     */
+/***********************/
 
 .modal {
     display: none;

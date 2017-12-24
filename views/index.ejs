@@ -6,72 +6,74 @@
     </head>
     <body>
         <!-- navbar -->
-        <header>
-            <h4>Up Next</h4>
-            <ul>
-                <li>Signup</li>
-                <li>Login</li>
-            </ul>
-        </header>
-        
-        <!-- hero box -->
-        <section id="hero">
-            <h1>Up Next</h1>
-            <!-- movie search bar -->
-            <div id="movie-search">
-                <input id="search-bar" type="text" placeholder="Search for your next movie or serie">
-                <button id="search-btn">Search</button>
-                <p id="error-message"></p>
-            </div>
-        </section>
-        
-        <!--Popup Box-->
-        <div class="modal" id="modal">
-            <div id="popup-box">
-                <span id="close-popup">X</span>
-                <p id="title"></p>
-                <p>directed by: <span id="director"></span></p>
-                <p id="released"></p>
-                <p id="genre"></p>
-                <img id="poster" src=""></img>
-                <p>Ratings</p>
-                <p>RottenTomatos:<span id="rTomatoes"></span> - IMDB:<span id="imdb"></span></p>
-                <p>Awards: <span id="awards"></span></p>
-            </div>
-        </div>
-        
-        
-        <!-- subpages -->
-        <section id="show-index">
-            
-            <!-- navbar buttons to show subpage -->
-            <div class="display-btns">
-                <button id="show-search-btn">Search</button>
-                <button id="show-list-btn">My List</button>
-            </div>
-            
-            <!-- search results -->
-            <div class="container" id="search-list">
-                <ul id="found-movies">
-                    <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                    <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                    <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                    <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                    <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                    <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                    <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                    <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                    <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                    <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
+        <div id="content-container">
+            <header>
+                <h4>Up Next</h4>
+                <ul>
+                    <li>Signup</li>
+                    <li>Login</li>
                 </ul>
+            </header>
+            
+            <!-- hero box -->
+            <section id="hero">
+                <h1>Up Next</h1>
+                <!-- movie search bar -->
+                <div id="movie-search">
+                    <input id="search-bar" type="text" placeholder="Search for your next movie or serie">
+                    <button id="search-btn">Search</button>
+                    <p id="error-message"></p>
+                </div>
+            </section>
+            
+            <!--Popup Box-->
+            <div class="modal" id="modal">
+                <div id="popup-box">
+                    <span id="close-popup">X</span>
+                    <p id="title"></p>
+                    <p>directed by: <span id="director"></span></p>
+                    <p id="released"></p>
+                    <p id="genre"></p>
+                    <img id="poster" src=""></img>
+                    <p>Ratings</p>
+                    <p>RottenTomatos:<span id="rTomatoes"></span> - IMDB:<span id="imdb"></span></p>
+                    <p>Awards: <span id="awards"></span></p>
+                </div>
             </div>
             
-            <!-- selection list -->
-            <div class="container" id="movie-list" hidden>
-                MovieList
-            </div>
-        </section>
+            
+            <!-- subpages -->
+            <section id="show-index">
+                
+                <!-- navbar buttons to show subpage -->
+                <div class="display-btns">
+                    <button id="show-search-btn">Search</button>
+                    <button id="show-list-btn">My List</button>
+                </div>
+                
+                <!-- search results -->
+                <div class="container" id="search-list">
+                    <ul id="found-movies">
+                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
+                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
+                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
+                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
+                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
+                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
+                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
+                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
+                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
+                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
+                    </ul>
+                </div>
+                
+                <!-- selection list -->
+                <div class="container" id="movie-list" hidden>
+                    MovieList
+                </div>
+            </section>
         
+        </div>
         
         <script type="text/javascript" src="/scripts/app.js"></script>
     </body>
