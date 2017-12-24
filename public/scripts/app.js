@@ -24,6 +24,7 @@ $("#show-list-btn").click(function(){
 
 // Click on  a movie to see more details about it in a popup screen
 $("#found-movies").on("click", "div", function(){
+    $("#popup-loader").show();
     var clickedId = $(this).attr('id');
     var url = "https://www.omdbapi.com/?i=" + clickedId + apikey;
     // AJAX call comes here
@@ -33,26 +34,35 @@ $("#found-movies").on("click", "div", function(){
 
 // Close the popup screen
 $("#close-popup").click(function(){
-    $("#modal").fadeOut();
+    $("#modal").hide();
 });
 
 // Callback functions come here
 
 function fillPopup(data){
-    $("#modal").fadeIn();
+    $("#popup-loader").hide();
+    console.log(data)
+    $("#modal").show();
     $("#title").text(data.Title);
     $("#director").text(data.Director);
-    $("#released").text(data.Released);
+    $("#released").text(data.Year);
     $("#genre").text(data.Genre);
     $("#rTomatoes").text(data.Ratings[1].Value);
     $("#imdb").text(data.Ratings[0].Value);
     $("#awards").text(data.Awards);
-    $("#poster").attr("src", data.Poster);
-    console.log(data)
+    if(data.Poster == ""){
+       console.log("poster not available")
+       $("#poster").attr("src", "https://www.movieinsider.com/images/none_175px.jpg") //In case the DB doesnt have poster
+    } else {
+       $("#poster").attr("src", data.Poster);
+    }
 }
 
 
 function ajaxCall(){
+    // Start loader
+    $("#found-movies").empty(); // Clear the list of movies that are displayed
+    $("#search-loader").show();
     // Get URL form input field
     var searchValue = $("#search-bar").val();
     var url = "https://www.omdbapi.com/?s=" + searchValue + apikey;
@@ -61,6 +71,7 @@ function ajaxCall(){
     $.get(url)
     .done(showMovies)
     .fail(function(){
+        $("#search-loader").hide();
         $("#error-message").text("Failed to get info..");
     })
 }
@@ -69,15 +80,17 @@ function ajaxCall(){
 // Find each movie in the array if the search came up with content
 function showMovies(data){
    if(data.Response == "False"){
+       $("#search-loader").hide();
        $("#error-message").text("No results...");
    } else {
-       $("#found-movies").empty(); // Clear the list of movies that are displayed
+       $("#search-loader").hide();
        data.Search.forEach(showMovie); //callback to showMovie with each of the items from the array
    }
 }
 
 // For each movie in the array, create a list item and append that item to the view page.
 function showMovie(movie){
+   console.log(movie)
    if(movie.Poster == "N/A"){
        var generalPoster = "https://www.movieinsider.com/images/none_175px.jpg" //In case the DB doesnt have poster
        var newMovie = $('<div id="'+movie.imdbID+'"><img src="'+generalPoster+'"><p class="movie-title">'+movie.Title+'</p></div>');

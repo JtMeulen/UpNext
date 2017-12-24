@@ -59,6 +59,56 @@ header ul li {
     font-size: 3em;
 }
 
+#movie-search {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Input styles */
+#search-btn, #search-bar {
+    font-size: 18px;
+    font-family: 'Merriweather Sans', sans-serif;
+    border: none;
+    border-radius: 3px;
+    height: 30px;
+}
+
+#search-bar {
+    padding-left: 10px;
+    width: 350px;
+}
+
+#search-btn {
+    margin-left: 15px;
+    width: 80px;
+}
+
+/***********************/
+/*  SELECTION BUTTONS  */
+/***********************/
+#display-btns {
+    padding: 0 50px;
+    border-bottom: solid 2px grey;
+}
+
+.display-btn {
+    background: none;
+    color: white;
+    padding: 3px;
+    margin-right: 10px;
+    width: 80px;
+    font-size: 18px;
+    font-family: 'Merriweather Sans', sans-serif;
+    border: none;
+}
+
+.selected-btn {
+    border-top: solid 2px grey;
+    border-right: solid 2px grey;
+    border-left: solid 2px grey;
+    border-bottom: solid 2px red;
+}
+
 /***********************/
 /*  BOTTOM CONTAINERS  */
 /***********************/
@@ -92,6 +142,11 @@ header ul li {
 /*       POPUP BOX     */
 /***********************/
 
+#popup-loader {
+    margin: 0 auto;
+    position: absolute;
+}
+
 .modal {
     display: none;
     width: 100%;
@@ -118,7 +173,7 @@ header ul li {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 80%;
+    height: 600px;
     width: 70%;
 }
 
@@ -131,4 +186,29 @@ header ul li {
 #close-popup:hover {
     opacity: 1;
     cursor: pointer;
+}
+
+
+/******************/
+/*     LOADER     */
+/******************/
+
+.loader {
+  border: 15px solid grey;
+  border-color: #40d69c grey #d13b21 grey;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin: 50px auto;
+  animation: loaderanimation 3s infinite linear;
+}
+
+@keyframes loaderanimation {
+  50% {
+    transform: rotate(360deg) scale(1.05);
+    border-color: #40d69c #7f7382 #d13b21 #7f7382;
+  }
+  100% {
+    transform: rotate(720deg) scale(1)
+  }
 }

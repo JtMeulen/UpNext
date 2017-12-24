@@ -22,7 +22,6 @@
                 <div id="movie-search">
                     <input id="search-bar" type="text" placeholder="Search for your next movie or serie">
                     <button id="search-btn">Search</button>
-                    <p id="error-message"></p>
                 </div>
             </section>
             
@@ -41,18 +40,22 @@
                 </div>
             </div>
             
+            <div id="popup-loader" class="loader" hidden></div>
+            
             
             <!-- subpages -->
             <section id="show-index">
                 
                 <!-- navbar buttons to show subpage -->
-                <div class="display-btns">
-                    <button id="show-search-btn">Search</button>
-                    <button id="show-list-btn">My List</button>
+                <div id="display-btns">
+                    <button class="display-btn selected-btn" id="show-search-btn">Search</button>
+                    <button class="display-btn" id="show-list-btn">My List</button>
                 </div>
                 
                 <!-- search results -->
                 <div class="container" id="search-list">
+                    <div id="search-loader" class="loader" hidden></div>
+                    <p id="error-message"></p>
                     <ul id="found-movies">
                         <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
                         <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
@@ -69,7 +72,7 @@
                 
                 <!-- selection list -->
                 <div class="container" id="movie-list" hidden>
-                    MovieList
+                    <div id="list-loader" class="loader" hidden></div>
                 </div>
             </section>
         
