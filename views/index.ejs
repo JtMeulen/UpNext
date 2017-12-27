@@ -19,6 +19,10 @@
             <section id="hero">
                 <h1>Up Next</h1>
                 <!-- movie search bar -->
+                <form>
+                    <input type=radio name="searchType" value="movie" checked="checked">Movie</input>
+                    <input type=radio name="searchType" value="series">Series</input>
+                </form>
                 <div id="movie-search">
                     <input id="search-bar" type="text" placeholder="Search for your next movie or serie">
                     <button id="search-btn">Search</button>
@@ -28,15 +32,22 @@
             <!--Popup Box-->
             <div class="modal" id="modal">
                 <div id="popup-box">
+                    <div class="image-container">
+                        <img id="poster" src="">
+                    </div>
                     <span id="close-popup">X</span>
-                    <p id="title"></p>
-                    <p>directed by: <span id="director"></span></p>
-                    <p id="released"></p>
-                    <p id="genre"></p>
-                    <img id="poster" src=""></img>
-                    <p>Ratings</p>
-                    <p>RottenTomatos:<span id="rTomatoes"></span> - IMDB:<span id="imdb"></span></p>
-                    <p>Awards: <span id="awards"></span></p>
+                    <div id="popup-info">
+                        <h1 id="title"></h1>
+                        <p>directed by: <span id="director"></span></p>
+                        <p id="released"></p>
+                        <p id="genre"></p>
+                        <h3>Plot</h3>
+                        <p id="plot"></p>
+                        <h3>Ratings</h3>
+                        <p>RottenTomatos: <span id="rTomatoes"></span> - IMDB: <span id="imdb"></span></p>
+                        <h3>Awards</h3>
+                        <p id="awards"></p>
+                    </div>    
                 </div>
             </div>
             
@@ -55,6 +66,7 @@
                 <!-- search results -->
                 <div class="container" id="search-list">
                     <div id="search-loader" class="loader" hidden></div>
+                    <div class="pages"></div>
                     <p id="error-message"></p>
                     <ul id="found-movies">
                         <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->

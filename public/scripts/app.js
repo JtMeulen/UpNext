@@ -1,5 +1,6 @@
 /* global $ */
 const apikey = "&apikey=74f9ae25"; // private api key needed for OMDB
+var urlForPages = "";
 
 // Search bar ajax logic
 $("#search-btn").click(ajaxCall); //if the user clicked the button
@@ -26,11 +27,30 @@ $("#show-list-btn").click(function(){
     $("#search-list").hide();
 });
 
+// Page numeration buttons
+$(".pages").on("click", "div", function(){
+    // $(".selected-page").removeClass("selected-page");
+    // $(this).addClass("selected-page");
+    $("#found-movies").empty(); // Clear the list of movies that are displayed
+    $(".pages").empty();
+    $("#search-loader").show();
+    var url = urlForPages + $(this).attr('id') + apikey;
+    // AJAX call comes here
+    $.get(url)
+    .done(showMovies)
+    .fail(function(){
+        $("#search-loader").hide();
+        $("#error-message").text("Failed to get info..");
+    })
+})
+
+
+
 // Click on  a movie to see more details about it in a popup screen
 $("#found-movies").on("click", "div", function(){
     $("#popup-loader").show();
     var clickedId = $(this).attr('id');
-    var url = "https://www.omdbapi.com/?i=" + clickedId + apikey;
+    var url = "https://www.omdbapi.com/?i=" + clickedId + "&plot=full" + apikey;
     // AJAX call comes here
     $.get(url)
     .done(fillPopup)
@@ -38,6 +58,14 @@ $("#found-movies").on("click", "div", function(){
 
 // Close the popup screen
 $("#close-popup").click(function(){
+    $("#title").text("");
+    $("#director").text("");
+    $("#released").text("");
+    $("#genre").text("");
+    $("#rTomatoes").text("");
+    $("#imdb").text("");
+    $("#awards").text("");
+    $("#poster").attr("src", "https://www.movieinsider.com/images/none_175px.jpg");   
     $("#modal").hide();
 });
 
@@ -51,12 +79,12 @@ function fillPopup(data){
     $("#director").text(data.Director);
     $("#released").text(data.Year);
     $("#genre").text(data.Genre);
+    $("#plot").text(data.Plot);
     $("#rTomatoes").text(data.Ratings[1].Value);
     $("#imdb").text(data.Ratings[0].Value);
     $("#awards").text(data.Awards);
-    if(data.Poster == ""){
-       console.log("poster not available")
-       $("#poster").attr("src", "https://www.movieinsider.com/images/none_175px.jpg") //In case the DB doesnt have poster
+    if(data.Poster == "N/A" || data.Poster == undefined){
+       $("#poster").attr("src", "https://www.movieinsider.com/images/none_175px.jpg"); //In case the DB doesnt have poster
     } else {
        $("#poster").attr("src", data.Poster);
     }
@@ -66,10 +94,14 @@ function fillPopup(data){
 function ajaxCall(){
     // Start loader
     $("#found-movies").empty(); // Clear the list of movies that are displayed
+    $(".pages").empty();
+    $("#error-message").empty();
     $("#search-loader").show();
     // Get URL form input field
+    var searchType = $("input[name=searchType]:checked").val();
     var searchValue = $("#search-bar").val();
-    var url = "https://www.omdbapi.com/?s=" + searchValue + apikey;
+    var url = "https://www.omdbapi.com/?s=" + searchValue + "&type=" + searchType + apikey;
+    urlForPages = "https://www.omdbapi.com/?s=" + searchValue + "&type=" + searchType + "&"
     $("#search-bar").val('');
     // AJAX call comes here
     $.get(url)
@@ -88,19 +120,28 @@ function showMovies(data){
        $("#error-message").text("No results...");
    } else {
        $("#search-loader").hide();
+       createPageNums(data);
        data.Search.forEach(showMovie); //callback to showMovie with each of the items from the array
    }
 }
 
 // For each movie in the array, create a list item and append that item to the view page.
 function showMovie(movie){
-   console.log(movie)
    if(movie.Poster == "N/A"){
        var generalPoster = "https://www.movieinsider.com/images/none_175px.jpg" //In case the DB doesnt have poster
-       var newMovie = $('<div id="'+movie.imdbID+'"><img src="'+generalPoster+'"><p class="movie-title">'+movie.Title+'</p></div>');
+       var newMovie = $('<div id="'+movie.imdbID+'" class="found-movie"><img src="'+generalPoster+'"><div class="found-info"><p class="movie-title">'+movie.Title+'</p><p class="movie-year">'+movie.Year+'</p></div></div>');
    } else {
-       var newMovie = $('<div id="'+movie.imdbID+'"><img src="'+movie.Poster+'"><p class="movie-title">'+movie.Title+'</p></div>');
+       var newMovie = $('<div id="'+movie.imdbID+'" class="found-movie"><img src="'+movie.Poster+'"><div class="found-info"><p class="movie-title">'+movie.Title+'</p><p class="movie-year">'+movie.Year+'</p></div></div>');
    }
    $("#found-movies").append(newMovie);
 }
 
+// Create numeration bar to scrolls through the pages of movies
+function createPageNums(data){
+    var totalPages = Math.ceil(data.totalResults/10)
+    for(var i = 1; i <= totalPages; i++){
+        if(i < 11){
+            $(".pages").append("<div id='page="+i+"' class='page-btn'>"+i+"</div");
+        }
+    }
+}

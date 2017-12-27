@@ -124,17 +124,61 @@ header ul li {
     padding: 20px;
 }
 
+.pages {
+    padding-left: 20px;
+    display: flex;
+}
+
+.page-btn {
+    cursor: pointer;
+    margin-right: 3px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+}
+
+.selected-page {
+    background: white;
+    color: blue;
+}
+
 #found-movies {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0;
 }
 
-#found-movies div {
-    flex-basis: 160px;
-    border: solid green 1px;
-    margin: 15px 5px 0 5px;
+.found-movie {
+    border-bottom: 1px solid white;
+    padding: 20px;
+    flex-basis: 100px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    
+}
+
+.found-info {
+    margin-left: 20px;
+    align-content: flex-start;
+    flex-grow: 8;
+    display: flex;
+    flex-direction: column;
+}
+
+.found-info p {
+    margin: 0;
+}
+
+.movie-title {
+    font-style: bold;
+    font-size: 1.3em;
+}
+
+.movie-year {
+    font-style: italic;
 }
 
 #found-movies div:hover {
@@ -142,7 +186,7 @@ header ul li {
 }
 
 #found-movies div img {
-    width: 100%;
+    width: 80px;
 }
 
 /***********************/
@@ -187,7 +231,6 @@ header ul li {
 #close-popup {
     opacity: 0.5;
     float: right;
-    padding: 15px;
 }
 
 #close-popup:hover {
@@ -195,6 +238,25 @@ header ul li {
     cursor: pointer;
 }
 
+/*Popup content*/
+#popup-info {
+    height: 100%;
+}
+
+#popup-info p {
+    margin: 0;
+}
+
+.image-container {
+    margin-top: 21px;
+    height: 100%;
+    padding-right: 30px;
+    float: left;
+}
+
+#title {
+    font-style: italic;
+}
 
 /******************/
 /*     LOADER     */
