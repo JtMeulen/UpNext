@@ -13,11 +13,15 @@ $("#search-bar").keypress(function(e) {
 // Movie or own list nav bar button logic
 // Search selection
 $("#show-search-btn").click(function(){
+    $(this).addClass("selected-btn");
+    $("#show-list-btn").removeClass("selected-btn");
     $("#search-list").show();
     $("#movie-list").hide();
 });
 // Own list selection
 $("#show-list-btn").click(function(){
+    $(this).addClass("selected-btn");
+    $("#show-search-btn").removeClass("selected-btn");
     $("#movie-list").show();
     $("#search-list").hide();
 });
