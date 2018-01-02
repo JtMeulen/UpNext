@@ -10,10 +10,42 @@
             <header>
                 <h4>Up Next</h4>
                 <ul>
-                    <li>Signup</li>
-                    <li>Login</li>
+                    <% if(!currentUser){ %>
+                        <li id="login-btn">Login</li>
+                        <li id="signup-btn">Signup</li>
+                    <% } else { %>
+                        <li class="logged-in">Welcome <%= currentUser.username %></li>
+                        <li id="logout-btn"><a href="/index/logout">Logout</a></li>
+                    <% } %>
+                    
                 </ul>
             </header>
+            <!-- Login and register box-->
+            <div id="auth-routes">
+                <div class="user-input-box" id="login-box" hidden>
+                    <form id="login-form" action="/index/login" method="POST">
+				        <label for="login-username">Username</label>
+				        <input id="login-username" type="text" name="username" placeholder="Username">
+
+				        <label for="login-password">Password</label>
+				        <input id="login-password" type="password" name="password">
+
+				        <button type="submit">Login</button>
+			        </form>
+                </div>
+                
+                <div class="user-input-box" id="signup-box" hidden>
+                    <form id="signup-form" action="/index/register" method="POST">
+				        <label for="signup-username">Username</label>
+				        <input id="signup-username" type="text" name="username" placeholder="Username">
+
+				        <label for="signup-password">Password</label>
+				        <input id="signup-password" type="password" name="password">
+
+				        <button type="submit">Sign Up</button>
+			        </form>
+                </div>
+            </div>
             
             <!-- hero box -->
             <section id="hero">
@@ -65,8 +97,8 @@
                 
                 <!-- search results -->
                 <div class="container" id="search-list">
-                    <div id="search-loader" class="loader" hidden></div>
                     <div class="pages"></div>
+                    <div id="search-loader" class="loader" hidden></div>
                     <p id="error-message"></p>
                     <ul id="found-movies">
                         <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->

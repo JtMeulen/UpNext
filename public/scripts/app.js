@@ -10,6 +10,26 @@ $("#search-bar").keypress(function(e) {
     }
 });
 
+// Login and authentication bars show up
+$("#signup-btn").click(function(){
+    $("#login-box").slideUp();
+    $("#signup-box").slideDown();
+});
+
+$("#login-btn").click(function(){
+    $("#signup-box").slideUp();
+    $("#login-box").slideDown();
+});
+
+// Hide elements if they are not clicked on
+$(document).mouseup(function(e){
+    var container = $(".user-input-box");
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(e.target) && container.has(e.target).length === 0 && !$("#signup-btn").is(e.target) && !$("#login-btn").is(e.target) ) {
+        container.slideUp();
+    }
+});
+
 
 // Movie or own list nav bar button logic
 // Search selection
@@ -29,22 +49,19 @@ $("#show-list-btn").click(function(){
 
 // Page numeration buttons
 $(".pages").on("click", "div", function(){
-    // $(".selected-page").removeClass("selected-page");
-    // $(this).addClass("selected-page");
+    $(".selected-page").removeClass("selected-page");
+    $(this).addClass("selected-page");
     $("#found-movies").empty(); // Clear the list of movies that are displayed
-    $(".pages").empty();
     $("#search-loader").show();
     var url = urlForPages + $(this).attr('id') + apikey;
     // AJAX call comes here
     $.get(url)
-    .done(showMovies)
+    .done(showMoviesNewPage)
     .fail(function(){
         $("#search-loader").hide();
         $("#error-message").text("Failed to get info..");
     })
 })
-
-
 
 // Click on  a movie to see more details about it in a popup screen
 $("#found-movies").on("click", "div", function(){
@@ -125,6 +142,17 @@ function showMovies(data){
    }
 }
 
+// Find each movie in the for the new page that is clicked
+function showMoviesNewPage(data){
+   if(data.Response == "False"){
+       $("#search-loader").hide();
+       $("#error-message").text("No results...");
+   } else {
+       $("#search-loader").hide();
+       data.Search.forEach(showMovie); //callback to showMovie with each of the items from the array
+   }
+}
+
 // For each movie in the array, create a list item and append that item to the view page.
 function showMovie(movie){
    if(movie.Poster == "N/A"){
@@ -141,7 +169,11 @@ function createPageNums(data){
     var totalPages = Math.ceil(data.totalResults/10)
     for(var i = 1; i <= totalPages; i++){
         if(i < 11){
-            $(".pages").append("<div id='page="+i+"' class='page-btn'>"+i+"</div");
+            if(i==1){
+               $(".pages").append("<div id='page="+i+"' class='page-btn selected-page'>"+i+"</div"); //add selected page class
+            } else {
+                $(".pages").append("<div id='page="+i+"' class='page-btn'>"+i+"</div");
+            }
         }
     }
 }
