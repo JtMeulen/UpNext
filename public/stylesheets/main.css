@@ -24,6 +24,7 @@ html, body {
     background: #081e44;
     margin: 0 auto;
     min-height: 110%;
+    position: relative;
 }
 
 /***********************/
@@ -46,7 +47,54 @@ header ul {
 
 header ul li {
     margin-left: 25px;
+    cursor: pointer;
 }
+
+.logged-in {
+    cursor: default;
+}
+
+header ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/***********************/
+/*     AUTH STYLES     */
+/***********************/
+#auth-routes {
+    position: relative;
+}
+
+#auth-routes input, #auth-routes button {
+    font-size: 12px;
+    font-family: 'Merriweather Sans', sans-serif;
+    border: none;
+    height: 20px;
+    width: 90%;
+}
+
+#auth-routes label {
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+#auth-routes input {
+    margin-bottom: 5px;
+}
+
+.user-input-box {
+    padding-top: 10px;
+    padding-left: 20px;
+    position: absolute;
+    z-index: 2;
+    right: 2px;
+    top: 0px;
+    width: 250px;
+    background: #010a19;
+    border: 2px solid black;
+}
+
 
 /***********************/
 /*     HERO STYLES     */
@@ -69,7 +117,6 @@ header ul li {
     font-size: 18px;
     font-family: 'Merriweather Sans', sans-serif;
     border: none;
-    
     height: 30px;
 }
 
@@ -105,6 +152,10 @@ header ul li {
     cursor: pointer;
 }
 
+.display-btn:hover {
+    background: #031738;
+}
+
 .display-btn:focus, .display-btn:active {
     outline: none;
 }
@@ -135,11 +186,14 @@ header ul li {
     width: 20px;
     height: 20px;
     border: 1px solid white;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 17px;
 }
 
 .selected-page {
     background: white;
-    color: blue;
+    color: #081e44;
 }
 
 #found-movies {
@@ -157,7 +211,12 @@ header ul li {
     display: flex;
     align-items: center;
     overflow: hidden;
-    
+    transition: 0.2s linear;
+}
+
+.found-movie:hover {
+    background: #031738;
+    cursor: pointer;
 }
 
 .found-info {
@@ -179,10 +238,6 @@ header ul li {
 
 .movie-year {
     font-style: italic;
-}
-
-#found-movies div:hover {
-    cursor: pointer;
 }
 
 #found-movies div img {
