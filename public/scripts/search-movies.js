@@ -10,27 +10,6 @@ $("#search-bar").keypress(function(e) {
     }
 });
 
-// Login and authentication bars show up
-$("#signup-btn").click(function(){
-    $("#login-box").slideUp();
-    $("#signup-box").slideDown();
-});
-
-$("#login-btn").click(function(){
-    $("#signup-box").slideUp();
-    $("#login-box").slideDown();
-});
-
-// Hide elements if they are not clicked on
-$(document).mouseup(function(e){
-    var container = $(".user-input-box");
-    // if the target of the click isn't the container nor a descendant of the container
-    if (!container.is(e.target) && container.has(e.target).length === 0 && !$("#signup-btn").is(e.target) && !$("#login-btn").is(e.target) ) {
-        container.slideUp();
-    }
-});
-
-
 // Movie or own list nav bar button logic
 // Search selection
 $("#show-search-btn").click(function(){
@@ -63,51 +42,6 @@ $(".pages").on("click", "div", function(){
     })
 })
 
-// Click on  a movie to see more details about it in a popup screen
-$("#found-movies").on("click", "div", function(){
-    $("#popup-loader").show();
-    var clickedId = $(this).attr('id');
-    var url = "https://www.omdbapi.com/?i=" + clickedId + "&plot=full" + apikey;
-    // AJAX call comes here
-    $.get(url)
-    .done(fillPopup)
-})
-
-// Close the popup screen
-$("#close-popup").click(function(){
-    $("#title").text("");
-    $("#director").text("");
-    $("#released").text("");
-    $("#genre").text("");
-    $("#rTomatoes").text("");
-    $("#imdb").text("");
-    $("#awards").text("");
-    $("#poster").attr("src", "https://www.movieinsider.com/images/none_175px.jpg");   
-    $("#modal").hide();
-});
-
-// Callback functions come here
-
-function fillPopup(data){
-    $("#popup-loader").hide();
-    console.log(data)
-    $("#modal").show();
-    $("#title").text(data.Title);
-    $("#director").text(data.Director);
-    $("#released").text(data.Year);
-    $("#genre").text(data.Genre);
-    $("#plot").text(data.Plot);
-    $("#rTomatoes").text(data.Ratings[1].Value);
-    $("#imdb").text(data.Ratings[0].Value);
-    $("#awards").text(data.Awards);
-    if(data.Poster == "N/A" || data.Poster == undefined){
-       $("#poster").attr("src", "https://www.movieinsider.com/images/none_175px.jpg"); //In case the DB doesnt have poster
-    } else {
-       $("#poster").attr("src", data.Poster);
-    }
-}
-
-
 function ajaxCall(){
     // Start loader
     $("#found-movies").empty(); // Clear the list of movies that are displayed
@@ -128,7 +62,6 @@ function ajaxCall(){
         $("#error-message").text("Failed to get info..");
     })
 }
-
 
 // Find each movie in the array if the search came up with content
 function showMovies(data){

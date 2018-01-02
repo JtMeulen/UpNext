@@ -4,7 +4,9 @@ var express         = require("express"),
     mongoose        = require("mongoose"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
+    MovieList       = require("./models/userlist"),
     User            = require("./models/user");
+    
     
 // Database setup
 var url = "mongodb://localhost/upnext";
@@ -41,6 +43,37 @@ app.get("/index", function(req, res){
     res.render("index");
 });
 
+
+// ********************
+//      API ROUTES
+// ********************
+
+app.get("/api/list", function(req, res){
+    User.findById(req.user)
+        .then(function(user){
+            res.json(user);
+        })
+        .catch(function(err){
+            console.log(err);
+        })
+});
+
+
+
+app.post("/api/userlist", function(req, res){
+    var currentUser_id = req.user.id
+    var name = req.body.name
+    MovieList.create({name: name, author_id: currentUser_id})
+        .then(function(newList){
+            res.status(201).json(newList)
+        })
+        .catch(function(err){
+                res.send(err);
+        })
+});
+            
+
+
 // ********************
 //      AUTH ROUTES
 // ********************
@@ -58,14 +91,14 @@ app.post("/index/register", function(req, res){
     });
 });
 
-// Login routes
+// Login route
 app.post("/index/login", function(req, res, next){
     passport.authenticate("local", {
         successRedirect: "/index",
         failureRedirect: "/index"
     })(req, res, next);
 });
-
+// Log out
 app.get("/index/logout", function(req, res){
     req.logout();
     res.redirect("/index");
