@@ -14,7 +14,7 @@
                         <li id="login-btn">Login</li>
                         <li id="signup-btn">Signup</li>
                     <% } else { %>
-                        <li class="logged-in">Welcome <%= currentUser.username %></li>
+                        <li class="logged-in">Welcome <span class="current_username" id="<%= currentUser.id %>"><%= currentUser.username %></span></li>
                         <li id="logout-btn"><a href="/index/logout">Logout</a></li>
                     <% } %>
                     
@@ -100,17 +100,9 @@
                     <div class="pages"></div>
                     <div id="search-loader" class="loader" hidden></div>
                     <p id="error-message"></p>
+                    
                     <ul id="found-movies">
-                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
-                        <!--<div id="132465454"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX300.jpg"><p class="movie-title">Hobbit the desolation of smaug</p></div>-->
+                        <!-- all found items are inserted here-->
                     </ul>
                 </div>
                 
@@ -121,6 +113,11 @@
                         <button id="create-list-btn">Create</button>
                     </div>
                     <div id="list-loader" class="loader" hidden></div>
+                    
+                    <ul id="found-lists">
+                        <!-- all found items are inserted here-->
+                    </ul>
+                    
                 </div>
             </section>
         

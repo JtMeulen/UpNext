@@ -6,8 +6,7 @@ var express         = require("express"),
     LocalStrategy   = require("passport-local"),
     MovieList       = require("./models/userlist"),
     User            = require("./models/user");
-    
-    
+
 // Database setup
 var url = "mongodb://localhost/upnext";
 mongoose.connect(url, {useMongoClient: true});
@@ -49,7 +48,7 @@ app.get("/index", function(req, res){
 // ********************
 
 app.get("/api/list", function(req, res){
-    User.findById(req.user)
+    MovieList.find()
         .then(function(user){
             res.json(user);
         })
@@ -57,8 +56,6 @@ app.get("/api/list", function(req, res){
             console.log(err);
         })
 });
-
-
 
 app.post("/api/userlist", function(req, res){
     var currentUser_id = req.user.id
@@ -98,6 +95,7 @@ app.post("/index/login", function(req, res, next){
         failureRedirect: "/index"
     })(req, res, next);
 });
+
 // Log out
 app.get("/index/logout", function(req, res){
     req.logout();
