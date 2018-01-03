@@ -10,10 +10,11 @@ html, body {
     height: 100%;
     /*background image*/
     background: linear-gradient(125deg, black, #000f28);
-    background-image: url("https://i.pinimg.com/originals/25/12/ec/2512ece2ee4bb87219577163fb77b52c.jpg");
+    /*background-image: url("https://i.pinimg.com/originals/25/12/ec/2512ece2ee4bb87219577163fb77b52c.jpg");*/
     background-repeat: no-repeat;
     background-attachment: fixed;
-    
+    background-position: center;
+    animation: background-rotation 120s linear infinite;
     /*general settings*/
     color: white;
     font-family: 'Merriweather Sans', sans-serif;
@@ -87,7 +88,7 @@ header ul li a {
     padding-top: 10px;
     padding-left: 20px;
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     right: 2px;
     top: 0px;
     width: 250px;
@@ -214,6 +215,10 @@ header ul li a {
     transition: 0.2s linear;
 }
 
+.found-movie:nth-of-type(1){
+    border-top: 1px solid white;;
+}
+
 .found-movie:hover {
     background: #031738;
     cursor: pointer;
@@ -244,6 +249,23 @@ header ul li a {
     width: 80px;
 }
 
+.add-btn {
+    position: relative;
+    opacity: 0;
+    font-size: 100px;
+    color: green;
+    transition: 0.2s linear;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.found-movie:hover .add-btn {
+    opacity: 1;
+}
+
+.add-btn:hover {
+    transform: scale(1.1);
+}
 /***********************/
 /*       POPUP BOX     */
 /***********************/
@@ -283,12 +305,30 @@ header ul li a {
     width: 70%;
 }
 
-#close-popup {
+#popup-box-small {
+    /*content*/
+    padding: 30px;
+    color: white;
+    /*background*/
+    background: #121a28;
+    /*positioning*/
+    position: absolute;
+    margin: auto;
+    border: 2px solid black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 200px;
+    overflow-y: scroll;
+}
+
+.close-popup {
     opacity: 0.5;
     float: right;
 }
 
-#close-popup:hover {
+.close-popup:hover {
     opacity: 1;
     cursor: pointer;
 }
@@ -335,4 +375,16 @@ header ul li a {
   100% {
     transform: rotate(720deg) scale(1)
   }
+}
+
+@keyframes background-rotation {
+    0% {background-image: url("https://i.pinimg.com/originals/25/12/ec/2512ece2ee4bb87219577163fb77b52c.jpg")}
+    10% {background-image: url("https://i.pinimg.com/originals/25/12/ec/2512ece2ee4bb87219577163fb77b52c.jpg")}
+    20% {background-image: url("https://i.imgur.com/QpZiLB1.jpg")}
+    40% {background-image: url("https://i.imgur.com/QpZiLB1.jpg")}
+    50% {background-image: url("https://i.imgur.com/OuSizUw.jpg")}
+    70% {background-image: url("https://i.imgur.com/OuSizUw.jpg")}
+    80% {background-image: url("https://i.imgur.com/qTdyfIc.jpg")}
+    90% {background-image: url("https://i.imgur.com/qTdyfIc.jpg")}
+    100% {background-image: url("https://i.pinimg.com/originals/25/12/ec/2512ece2ee4bb87219577163fb77b52c.jpg")}
 }

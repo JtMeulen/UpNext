@@ -5,6 +5,7 @@ var express         = require("express"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
     MovieList       = require("./models/userlist"),
+    Movie           = require("./models/movie"),
     User            = require("./models/user");
 
 // Database setup
@@ -47,7 +48,7 @@ app.get("/index", function(req, res){
 //      API ROUTES
 // ********************
 
-app.get("/api/list", function(req, res){
+app.get("/api/alllists", function(req, res){
     MovieList.find()
         .then(function(user){
             res.json(user);
@@ -68,7 +69,30 @@ app.post("/api/userlist", function(req, res){
                 res.send(err);
         })
 });
-            
+
+app.get("/api/list/:id", function(req, res){
+    var id = req.params.id
+    MovieList.findById(id).populate("movies").exec()
+        .then(function(list){
+            res.json(list)
+        })
+        .catch(function(err){
+            console.log(err);
+        })
+});
+
+// MOVIE CREATE
+app.post("/:id", function(req, res){
+    MovieList.findById(req.params.id)
+    .then(function(list){
+        Movie.create(req.body.movie).then(function(movie){
+            movie.save();
+            list.movies.push(movie);
+            list.save();
+        })
+        res.status(201).json(list)
+    })
+});
 
 
 // ********************

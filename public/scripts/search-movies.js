@@ -90,9 +90,23 @@ function showMoviesNewPage(data){
 function showMovie(movie){
    if(movie.Poster == "N/A"){
        var generalPoster = "https://www.movieinsider.com/images/none_175px.jpg" //In case the DB doesnt have poster
-       var newMovie = $('<div id="'+movie.imdbID+'" class="found-movie"><img src="'+generalPoster+'"><div class="found-info"><p class="movie-title">'+movie.Title+'</p><p class="movie-year">'+movie.Year+'</p></div></div>');
+       var newMovie = $('<div id="'+movie.imdbID+'" class="found-movie">' +
+                            '<img src="'+generalPoster+'">' +
+                            '<div class="found-info">' +
+                                '<p class="movie-title">'+movie.Title+'</p>' +
+                                '<p class="movie-year">'+movie.Year+'</p>' +
+                            '</div>' + 
+                            '<span class="add-btn">+</span>' +
+                        '</div>');
    } else {
-       var newMovie = $('<div id="'+movie.imdbID+'" class="found-movie"><img src="'+movie.Poster+'"><div class="found-info"><p class="movie-title">'+movie.Title+'</p><p class="movie-year">'+movie.Year+'</p></div></div>');
+       var newMovie = $('<div id="'+movie.imdbID+'" class="found-movie">' +
+                            '<img src="'+movie.Poster+'">' +
+                            '<div class="found-info">' +
+                                '<p class="movie-title">'+movie.Title+'</p>' +
+                                '<p class="movie-year">'+movie.Year+'</p>' +
+                            '</div>' + 
+                            '<span class="add-btn">+</span>' +
+                        '</div>');
    }
    $("#found-movies").append(newMovie);
 }
