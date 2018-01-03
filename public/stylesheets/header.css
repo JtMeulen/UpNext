@@ -1,0 +1,67 @@
+/***********************/
+/*     HEADER STYLES   */
+/***********************/
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+header h4, header ul{
+    margin: 10px 25px;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+}
+
+header ul li {
+    margin-left: 25px;
+    cursor: pointer;
+}
+
+.logged-in {
+    cursor: default;
+}
+
+header ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/***********************/
+/*     AUTH STYLES     */
+/***********************/
+#auth-routes {
+    position: relative;
+}
+
+#auth-routes input, #auth-routes button {
+    font-size: 12px;
+    font-family: 'Merriweather Sans', sans-serif;
+    border: none;
+    height: 20px;
+    width: 90%;
+}
+
+#auth-routes label {
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+#auth-routes input {
+    margin-bottom: 5px;
+}
+
+.user-input-box {
+    padding-top: 10px;
+    padding-left: 20px;
+    position: absolute;
+    z-index: 3;
+    right: 2px;
+    top: 0px;
+    width: 250px;
+    background: #010a19;
+    border: 2px solid black;
+}

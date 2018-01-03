@@ -1,0 +1,70 @@
+/***********************/
+/*     HERO STYLES     */
+/***********************/
+#hero {
+    margin: 50px;
+}
+
+#hero h1 {
+    font-size: 3em;
+}
+
+#movie-search {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Input styles */
+#search-btn, #search-bar {
+    font-size: 18px;
+    font-family: 'Merriweather Sans', sans-serif;
+    border: none;
+    height: 30px;
+}
+
+#search-bar {
+    padding-left: 10px;
+    width: 350px;
+}
+
+#search-btn {
+    margin-left: 15px;
+    width: 80px;
+}
+
+/***********************/
+/*  SELECTION BUTTONS  */
+/***********************/
+#display-btns {
+    padding: 0 50px;
+    border-bottom: solid 2px grey;
+}
+
+.display-btn {
+    background: none;
+    color: white;
+    padding: 3px;
+    margin-right: 10px;
+    width: 100px;
+    font-size: 18px;
+    font-family: 'Merriweather Sans', sans-serif;
+    border: none;
+    transform: translateY(2px);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.display-btn:hover {
+    background: #031738;
+}
+
+.display-btn:focus, .display-btn:active {
+    outline: none;
+}
+
+.selected-btn {
+    border-top: solid 2px grey;
+    border-right: solid 2px grey;
+    border-left: solid 2px grey;
+    border-bottom: solid 2px #081e44;
+}
