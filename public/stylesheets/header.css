@@ -30,6 +30,10 @@ header ul li a {
     text-decoration: none;
 }
 
+.current_username{
+    text-transform: capitalize;
+}
+
 /***********************/
 /*     AUTH STYLES     */
 /***********************/

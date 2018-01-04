@@ -1,7 +1,7 @@
 /* global $ */
 
 // Click on  a movie to see more details about it in a popup screen
-$("#found-movies").on("click", "div", function(){
+$(".movies").on("click", "div", function(){
     $("#popup-loader").show();
     var clickedId = $(this).attr('id');
     var url = "https://www.omdbapi.com/?i=" + clickedId + "&plot=full" + apikey;

@@ -5,7 +5,6 @@ var express         = require("express"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
     MovieList       = require("./models/userlist"),
-    Movie           = require("./models/movie"),
     User            = require("./models/user");
 
 // Database setup
@@ -66,13 +65,13 @@ app.post("/api/userlist", function(req, res){
             res.status(201).json(newList)
         })
         .catch(function(err){
-                res.send(err);
+            res.send(err);
         })
 });
 
 app.get("/api/list/:id", function(req, res){
     var id = req.params.id
-    MovieList.findById(id).populate("movies").exec()
+    MovieList.findById(id)
         .then(function(list){
             res.json(list)
         })
@@ -81,19 +80,19 @@ app.get("/api/list/:id", function(req, res){
         })
 });
 
-// MOVIE CREATE
-app.post("/:id", function(req, res){
-    MovieList.findById(req.params.id)
+//MOVIE CREATE
+app.put("/:id", function(req, res){
+    var movie = req.body;
+    console.log("*********")
+    console.log(movie)
+    console.log("*********")
+    MovieList.findByIdAndUpdate(req.params.id, {$push: {movies: movie}}, {new:true})
     .then(function(list){
-        Movie.create(req.body.movie).then(function(movie){
-            movie.save();
-            list.movies.push(movie);
-            list.save();
-        })
+        // list.movies.push(movie);
+        // list.save();
         res.status(201).json(list)
-    })
+    });
 });
-
 
 // ********************
 //      AUTH ROUTES

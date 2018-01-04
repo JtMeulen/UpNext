@@ -10,11 +10,11 @@ html, body {
     height: 100%;
     /*background image*/
     background: linear-gradient(125deg, black, #000f28);
-    /*background-image: url("https://i.pinimg.com/originals/25/12/ec/2512ece2ee4bb87219577163fb77b52c.jpg");*/
+    background-image: url("https://i.pinimg.com/originals/25/12/ec/2512ece2ee4bb87219577163fb77b52c.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    animation: background-rotation 120s linear infinite;
+    /*animation: background-rotation 5s linear infinite;*/
     /*general settings*/
     color: white;
     font-family: 'Merriweather Sans', sans-serif;
@@ -35,32 +35,29 @@ html, body {
 
 .loader {
   border: 15px solid grey;
-  border-color: #40d69c grey #d13b21 grey;
+  border-color: white #081e44 grey #081e44;
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 50px;
+  height: 50px;
   margin: 50px auto;
   animation: loaderanimation 3s infinite linear;
 }
 
 @keyframes loaderanimation {
   50% {
-    transform: rotate(360deg) scale(1.05);
-    border-color: #40d69c #7f7382 #d13b21 #7f7382;
+    transform: rotate(360deg);
   }
   100% {
-    transform: rotate(720deg) scale(1)
+    transform: rotate(720deg)
   }
 }
 
 @keyframes background-rotation {
     0% {background-image: url("https://i.pinimg.com/originals/25/12/ec/2512ece2ee4bb87219577163fb77b52c.jpg")}
-    10% {background-image: url("https://i.pinimg.com/originals/25/12/ec/2512ece2ee4bb87219577163fb77b52c.jpg")}
-    20% {background-image: url("https://i.imgur.com/QpZiLB1.jpg")}
-    40% {background-image: url("https://i.imgur.com/QpZiLB1.jpg")}
-    50% {background-image: url("https://i.imgur.com/OuSizUw.jpg")}
-    70% {background-image: url("https://i.imgur.com/OuSizUw.jpg")}
-    80% {background-image: url("https://i.imgur.com/qTdyfIc.jpg")}
-    90% {background-image: url("https://i.imgur.com/qTdyfIc.jpg")}
+    25% {background-image: url("https://i.pinimg.com/originals/25/12/ec/2512ece2ee4bb87219577163fb77b52c.jpg")}
+    30% {background-image: url("https://i.imgur.com/QpZiLB1.jpg")}
+    65% {background-image: url("https://i.imgur.com/QpZiLB1.jpg")}
+    70% {background-image: url("http://flashwallpapers.com/wp-content/uploads/2015/04/Game-of-Thrones-Houses-1440x900.jpg")}
+    95% {background-image: url("http://flashwallpapers.com/wp-content/uploads/2015/04/Game-of-Thrones-Houses-1440x900.jpg")}
     100% {background-image: url("https://i.pinimg.com/originals/25/12/ec/2512ece2ee4bb87219577163fb77b52c.jpg")}
 }
