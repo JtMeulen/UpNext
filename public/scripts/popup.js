@@ -4,7 +4,7 @@
 $(".movies").on("click", "div", function(){
     $("#popup-loader").show();
     var clickedId = $(this).attr('id');
-    var url = "https://www.omdbapi.com/?i=" + clickedId + "&plot=full" + apikey;
+    var url = "https://www.omdbapi.com/?i=" + clickedId + apikey;
     // AJAX call comes here
     $.get(url)
     .done(fillPopup)
