@@ -8,7 +8,7 @@ var express         = require("express"),
     User            = require("./models/user");
 
 // Database setup
-var url = "mongodb://localhost/upnext";
+var url = process.env.DATABASEURL || "mongodb://localhost/upnext";
 mongoose.connect(url, {useMongoClient: true});
 mongoose.Promise = global.Promise;
 

@@ -32,8 +32,8 @@ $("#found-movies").on("click", "span", function(event){
         .then(function(){
             $("#modal-small").hide();
         })
-        .catch(function(err){
-            console.log(err)
+        .catch(function(){
+            console.log("No list selected")
         });
     })
 })

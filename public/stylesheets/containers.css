@@ -181,3 +181,38 @@
     margin-left: 15px;
     width: 150px;
 }
+
+/* Found listst popup */
+
+#found-lists-popup {
+    padding-left: 0;
+}
+
+.found-lists-popup {
+    border-bottom: 1px solid white;
+    padding-left: 5px;
+    overflow: hidden;
+    transition: 0.2s linear;
+}
+
+.found-lists-popup:nth-of-type(1) {
+    margin-top: 40px;
+    border-top: 1px solid white;
+}
+
+.found-lists-popup:hover {
+    background: #031738;
+    cursor: pointer;
+}
+
+.list-name-popup {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    text-transform: capitalize;
+}
+
+.list-total-popup {
+    font-size: 10px;
+    font-style: italic;
+}

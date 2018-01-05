@@ -1,16 +1,6 @@
 /* global $ */
-$("#show-list-btn").click(function(){
-    $("#found-lists").empty();
-     $("#found-lists-popup").empty();
-    var username = $(".current_username").attr("id");
-    if(username){                                               // ONLY IF USER IS LOGGED IN
-        $.get("/api/alllists")                                      // LOADS AUTOMATICALLY
-        .done(showLists)
-        .fail(function(){
-            console.log("COULDNT FIND API")
-        })
-    }
-})
+$("#show-list-btn").click(callListsApi);
+$("#found-movies").on("click", "span", callListsApi);
 
 $("#back-to-lists").click(function(){
     $("#inside-list").hide();
@@ -26,10 +16,23 @@ $("#create-list-btn").click(function(){
         appendList(newlist);
         appendPopup(newlist)
     })
-    .catch(function(err){
-        console.log(err)
+    .catch(function(){
+        console.log("Couldnt find lists")
     });
 });
+
+function callListsApi(){
+    $("#found-lists").empty();
+    $("#found-lists-popup").empty();
+    var username = $(".current_username").attr("id");
+    if(username){                                               // ONLY IF USER IS LOGGED IN
+        $.get("/api/alllists")                                      // LOADS AUTOMATICALLY
+        .done(showLists)
+        .fail(function(){
+            console.log("COULDNT FIND API")
+        })
+    }
+}
 
 
 function showLists(data){
@@ -54,6 +57,6 @@ function appendList(list){
 }
 
 function appendPopup(list){
-    var newList = $('<div class="found-lists" id="'+list._id+'"><p class="list-name">'+list.name+'</p><p class="list-total">Total movies: <span>'+list.movies.length+'</span></div>')
+    var newList = $('<div class="found-lists-popup" id="'+list._id+'"><p class="list-name-popup">'+list.name+'</p><p class="list-total-popup">Total movies: <span>'+list.movies.length+'</span></div>')
     $("#found-lists-popup").prepend(newList);
 }

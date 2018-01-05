@@ -15,15 +15,16 @@ $("#search-bar").keypress(function(e) {
 $("#show-search-btn").click(function(){
     $(this).addClass("selected-btn");
     $("#show-list-btn").removeClass("selected-btn");
-    $("#search-list").show();
     $("#movie-list").hide();
+    $("#search-list").show();
 });
+
 // Own list selection
 $("#show-list-btn").click(function(){
     $(this).addClass("selected-btn");
     $("#show-search-btn").removeClass("selected-btn");
-    $("#movie-list").show();
     $("#search-list").hide();
+    $("#movie-list").show();
 });
 
 // Page numeration buttons
@@ -38,15 +39,26 @@ $(".pages").on("click", "div", function(){
     .done(showMoviesNewPage)
     .fail(function(){
         $("#search-loader").hide();
+        $("#found-movies").empty();
         $("#error-message").text("Failed to get info..");
     })
 })
 
 function ajaxCall(){
-    // Start loader
+    // manage all the showing fields
+    $("#inside-list").hide();
+    $("#movies-in-list").empty();
+    $("#your-lists").show();
+    $("#movie-list").hide();
+    $("#search-list").show();
+    
     $("#found-movies").empty(); // Clear the list of movies that are displayed
     $(".pages").empty();
     $("#error-message").empty();
+    $("#show-search-btn").addClass("selected-btn");
+    $("#show-list-btn").removeClass("selected-btn");
+    
+    // Start loader
     $("#search-loader").show();
     // Get URL form input field
     var searchType = $("input[name=searchType]:checked").val();
