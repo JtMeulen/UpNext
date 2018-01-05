@@ -8,7 +8,7 @@ $("#found-movies").on("click", "span", function(event){
     var title = $(this).siblings(".found-info").children(".movie-title").text();
     var year = $(this).siblings(".found-info").children(".movie-year").text();
     var movie_id = Math.floor(Math.random() * 99999999999999999999) + 999999999;
-    
+    console.log(movie_id);
     var movie = {
         movie_id: movie_id,
         imdbId: imdbId,
