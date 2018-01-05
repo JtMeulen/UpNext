@@ -80,6 +80,17 @@ app.get("/api/list/:id", function(req, res){
         })
 });
 
+app.delete("/api/list/:id", function(req, res){
+    var id = req.params.id;
+    MovieList.findByIdAndRemove(id)
+        .then(function(list){
+            res.json(list)
+        })
+        .catch(function(err){
+            console.log(err);
+        })
+})
+
 //MOVIE CREATE
 app.put("/:id", function(req, res){
     var movie = req.body;

@@ -54,7 +54,7 @@ function appendList(list){
                             '<p class="list-name">'+list.name+'</p>'+
                             '<p class="list-total">Total movies: <span>'+list.movies.length+'</span></p>'+
                         '</div>' +
-                        '<span class="delete-list-btn">X</span>'+
+                        '<span class="delete-list-btn">x</span>'+
                     '</div>')
     $("#found-lists").prepend(newList);
 }
@@ -63,3 +63,18 @@ function appendPopup(list){
     var newList = $('<div class="found-lists-popup" id="'+list._id+'"><p class="list-name-popup">'+list.name+'</p><p class="list-total-popup">Total movies: <span>'+list.movies.length+'</span></div>')
     $("#found-lists-popup").prepend(newList);
 }
+
+
+// DELETING THE LIST
+$("#found-lists").on("click", ".delete-list-btn", function(event){
+    event.stopImmediatePropagation();
+    var id = $(this).parent().attr("id");
+    $(this).parent().fadeOut();
+    $.ajax({
+          method: "DELETE", 
+            url: "/api/list/" + id
+        })
+      .then(function(data){
+          console.log("deleted")
+      })
+})

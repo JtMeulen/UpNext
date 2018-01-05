@@ -216,3 +216,27 @@
     font-size: 10px;
     font-style: italic;
 }
+
+/*  INSIDE LIST  */
+.delete-movie-btn, .seen-movie-btn  {
+    position: relative;
+    opacity: 0;
+    font-size: 60px;
+    color: red;
+    transition: 0.2s linear;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.found-movie:hover .delete-movie-btn, .found-movie:hover .seen-movie-btn {
+    opacity: 1;
+}
+
+.delete-movie-btn:hover, .seen-movie-btn:hover {
+    transform: scale(1.1);
+}
+
+.seen-movie-btn {
+    color: green;
+    margin-right: 10px;
+}
