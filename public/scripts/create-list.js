@@ -22,6 +22,9 @@ $("#create-list-btn").click(function(){
 });
 
 function callListsApi(){
+    $("#inside-list").hide();
+    $("#movies-in-list").empty();
+    $("#your-lists").show();
     $("#found-lists").empty();
     $("#found-lists-popup").empty();
     var username = $(".current_username").attr("id");
