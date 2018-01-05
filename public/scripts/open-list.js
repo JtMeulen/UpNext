@@ -38,9 +38,7 @@ $("#movies-in-list").on("click", ".delete-movie-btn", function(event){
             data: data,
             method: "PUT"
         })
-        .then(function(data){
-            console.log("Deleted movie");
-        })
+        .then()
         .catch(function(){
             console.log("No list selected")
         });
