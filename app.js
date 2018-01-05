@@ -46,7 +46,7 @@ app.get("/index", function(req, res){
 // ********************
 //      API ROUTES
 // ********************
-
+// Get collection of all the lists api
 app.get("/api/alllists", function(req, res){
     MovieList.find()
         .then(function(user){
@@ -57,6 +57,7 @@ app.get("/api/alllists", function(req, res){
         })
 });
 
+// Create a new list
 app.post("/api/userlist", function(req, res){
     var currentUser_id = req.user.id
     var name = req.body.name
@@ -69,6 +70,7 @@ app.post("/api/userlist", function(req, res){
         })
 });
 
+// Get the List api
 app.get("/api/list/:id", function(req, res){
     var id = req.params.id
     MovieList.findById(id)
@@ -80,6 +82,7 @@ app.get("/api/list/:id", function(req, res){
         })
 });
 
+// delete List from DB
 app.delete("/api/list/:id", function(req, res){
     var id = req.params.id;
     MovieList.findByIdAndRemove(id)
@@ -91,19 +94,24 @@ app.delete("/api/list/:id", function(req, res){
         })
 })
 
-//MOVIE CREATE
-app.put("/:id", function(req, res){
+// Put the movie in a List
+app.put("/api/list/:id", function(req, res){
     var movie = req.body;
-    console.log("*********")
-    console.log(movie)
-    console.log("*********")
     MovieList.findByIdAndUpdate(req.params.id, {$push: {movies: movie}}, {new:true})
     .then(function(list){
-        // list.movies.push(movie);
-        // list.save();
         res.status(201).json(list)
     });
 });
+
+// delete a movie from the list
+app.put("/api/list/:id/delete", function(req, res){
+    var movie_id = req.body.movie_id;
+    MovieList.findByIdAndUpdate(req.params.id, {$pull: {"movies": {"movie_id": movie_id}}}, {new:true})
+    .then(function(list){
+        res.status(201).json(list)
+    });
+});
+
 
 // ********************
 //      AUTH ROUTES

@@ -3,6 +3,7 @@ $("#show-list-btn").click(callListsApi);
 $("#found-movies").on("click", "span", callListsApi);
 
 $("#back-to-lists").click(function(){
+    callListsApi();
     $("#inside-list").hide();
     $("#movies-in-list").empty();
     $("#your-lists").show();

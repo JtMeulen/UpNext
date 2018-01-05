@@ -7,12 +7,15 @@ $("#found-movies").on("click", "span", function(event){
     var poster = $(this).siblings("img").attr("src");
     var title = $(this).siblings(".found-info").children(".movie-title").text();
     var year = $(this).siblings(".found-info").children(".movie-year").text();
+    var movie_id = Math.floor(Math.random() * 99999999999999999999) + 999999999;
     
     var movie = {
+        movie_id: movie_id,
         imdbId: imdbId,
         poster: poster,
         title: title,
-        year: year
+        year: year,
+        seen: false
     }
     
     sessionlist.unshift(movie);
@@ -23,7 +26,7 @@ $("#found-movies").on("click", "span", function(event){
     $("#found-lists-popup").on("click", "div", function(event){
         event.stopImmediatePropagation();
         var listId = $(this).attr("id");
-        var url = "/" + listId;
+        var url = "/api/list/" + listId;
         $.ajax({
             url: url, 
             data: sessionlist[0],

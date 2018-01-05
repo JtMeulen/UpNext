@@ -240,3 +240,11 @@
     color: green;
     margin-right: 10px;
 }
+
+.seen-movie {
+    background: #4f6384;
+}
+
+.seen-movie:hover {
+    background: #4f6384;
+}
