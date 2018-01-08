@@ -112,6 +112,23 @@ app.put("/api/list/:id/delete", function(req, res){
     });
 });
 
+// update a movie to seen status
+app.put("/api/list/:id/update/seen", function(req, res){
+    var movie_id = req.body.movie_Id;
+    MovieList.update({'movies.movie_id': movie_id}, {$set: {"movies.$.seen": "seen"}})
+    .then(function(list){
+        res.status(201).json(list)
+    });
+});
+
+// update a movie to not-seen status
+app.put("/api/list/:id/update/notseen", function(req, res){
+    var movie_id = req.body.movie_Id;
+    MovieList.update({'movies.movie_id': movie_id}, {$set: {"movies.$.seen": "not-seen"}})
+    .then(function(list){
+        res.status(201).json(list)
+    });
+});
 
 // ********************
 //      AUTH ROUTES
