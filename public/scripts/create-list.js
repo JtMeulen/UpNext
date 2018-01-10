@@ -60,8 +60,17 @@ function appendList(list){
     });
     var seen_progress = (seen_total/list.movies.length) * 100;
     
-    // Check if the progress is 100%, if it is add completed class
-    if(seen_progress == 100){
+    // Check if the progress is 100%, if it is add completed class. Or if there is no movie in the list, make the progbar empty
+    if(seen_total == 0){
+        var newList = $('<div class="found-lists" id="'+list._id+'">' +
+                            '<div>' +
+                                '<p class="list-name">'+list.name+'</p>'+
+                                '<p class="list-total">Total movies: <span>'+list.movies.length+'</span> - Seen: <span>'+seen_total+'</span></p>'+
+                                '<div class="progress-bar"><div class="current_progress" style="width: 0px;"></div></div>'+
+                            '</div>' +
+                            '<span class="delete-list-btn">x</span>'+
+                        '</div>')
+    } else if(seen_progress == 100){
         var newList = $('<div class="found-lists" id="'+list._id+'">' +
                             '<div>' +
                                 '<p class="list-name">'+list.name+'</p>'+
