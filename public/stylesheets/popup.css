@@ -21,6 +21,7 @@
 }
 
 #popup-box {
+    display: none;
     /*content*/
     padding: 30px;
     color: white;

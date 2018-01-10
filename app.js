@@ -130,6 +130,15 @@ app.put("/api/list/:id/update/notseen", function(req, res){
     });
 });
 
+// Add user a user to a list
+app.put("/api/list/:id/adduser", function(req, res){
+    var username = req.body.username;
+    MovieList.update({_id: req.params.id}, {$push: {"users": username}}, {new:true})
+    .then(function(list){
+        res.status(201).json(list)
+    });
+})
+
 // ********************
 //      AUTH ROUTES
 // ********************

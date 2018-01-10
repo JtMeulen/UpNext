@@ -2,6 +2,7 @@
 
 // Click on  a movie to see more details about it in a popup screen
 $(".movies").on("click", "div", function(){
+    $("#modal").show();
     $("#popup-loader").show();
     var clickedId = $(this).attr('id');
     var url = "https://www.omdbapi.com/?i=" + clickedId + apikey;
@@ -24,14 +25,14 @@ $("#close-popup").click(function(){
     $("#awards").text("");
     $("#poster").attr("src", "https://www.movieinsider.com/images/none_175px.jpg");   
     $("#modal").hide();
+    $("#popup-box").hide();
 });
 
 // Callback functions come here
 
 function fillPopup(data){
     $("#popup-loader").hide();
-    console.log(data)
-    $("#modal").show();
+    $("#popup-box").show();
     $("#title").text(data.Title);
     $("#director").text(data.Director);
     $("#released").text(data.Year);

@@ -18,7 +18,7 @@
                         <li id="login-btn">Login</li>
                         <li id="signup-btn">Signup</li>
                     <% } else { %>
-                        <li class="logged-in">Welcome <span class="current_username" id="<%= currentUser.id %>"><%= currentUser.username %></span></li>
+                        <li class="logged-in">Welcome <span class="current_username" name="<%= currentUser.username %>" id="<%= currentUser.id %>"><%= currentUser.username %></span></li>
                         <li id="logout-btn"><a href="/index/logout">Logout</a></li>
                     <% } %>
                     
@@ -67,6 +67,7 @@
             
             <!--Popup Box-->
             <div class="modal" id="modal">
+                <div id="popup-loader" class="loader" hidden></div>
                 <div id="popup-box">
                     <div class="image-container">
                         <img id="poster" src="">
@@ -87,7 +88,7 @@
                 </div>
             </div>
             
-            <div id="popup-loader" class="loader" hidden></div>
+            
             
             <div class="modal" id="modal-small">
                 <div id="popup-box-small">
@@ -105,6 +106,7 @@
                 <div id="display-btns">
                     <button class="display-btn selected-btn" id="show-search-btn">Search</button>
                     <button class="display-btn" id="show-list-btn">My Lists</button>
+                    <button class="display-btn" id="show-shared-btn">Shared</button>
                 </div>
                 
                 <!-- search results -->
@@ -126,8 +128,8 @@
                     <% } else { %>
                         <div id="your-lists">
                             <div id="create-list">
-                                <input id="list-name-input" type="text" name="list-name" placeholder="Insert your new list name here" required></input>
-                                <button id="create-list-btn">Create</button>
+                                <input class="small-input-field" id="list-name-input" type="text" name="list-name" placeholder="Insert your new list name here" required></input>
+                                <button class="small-input-btn" id="create-list-btn">Create</button>
                             </div>
                             <div id="list-loader" class="loader" hidden></div>
                             
@@ -137,8 +139,41 @@
                         </div>  
                         
                         <div id="inside-list" hidden>
-                            <button id="back-to-lists">Back to lists</button>
+                            <div id="navigation-btns">
+                                <button class="medium-btn" id="back-to-lists">Back to lists</button>
+                                <button class="medium-btn" id="show-share-input">Share this list</button>
+                                <div id="share-input" hidden>
+                                    <input class="small-input-field" type="text" id="share-username" placeholder="Username">
+                                    <button class="small-input-btn" id="share-with-user">Share</button>
+                                </div>
+                            </div>
+                            
                             <ul id="movies-in-list" class="movies">
+                                <!-- all found movies inside the list are inserted here-->
+                                
+                            </ul>
+                        </div>
+                    <% } %>
+                </div>
+                
+                <!-- Shared Lists -->
+                <div class="container" id="shared-list" hidden>
+                    <% if(!currentUser){ %>
+                        <p>Please log in or register to see and maintain your Up Next lists!</p>
+                        <p>You can do so at the top of the page</p>
+                    <% } else { %>
+                        <div id="shared-lists">
+                            <div id="list-loader" class="loader" hidden></div>
+                            
+                            <ul id="found-shared-lists" class="lists">
+                                <!-- all found items are inserted here-->
+                            </ul>
+                        </div>  
+                        
+                        <div id="inside-shared" hidden>
+                            <button id="back-to-shared">Back to lists</button>
+                            
+                            <ul id="movies-in-shared" class="movies">
                                 <!-- all found movies inside the list are inserted here-->
                                 
                             </ul>
@@ -155,5 +190,6 @@
         <script type="text/javascript" src="/scripts/create-list.js"></script>
         <script type="text/javascript" src="/scripts/open-list.js"></script>
         <script type="text/javascript" src="/scripts/create-movie.js"></script>
+        <script type="text/javascript" src="/scripts/share-list.js"></script>
     </body>
 </html>

@@ -11,6 +11,7 @@ $("#back-to-lists").click(function(){
 
 $("#create-list-btn").click(function(){
     var name = $("#list-name-input").val();
+    $("#list-name-input").val("");
     $.post("/api/userlist", {name: name})
     .then(function(newlist){
         $("#list-name").val("");

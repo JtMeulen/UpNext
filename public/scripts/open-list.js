@@ -4,6 +4,7 @@ $("#found-lists").on("click", "div", function(){
     var foundId = $(this).attr("id");
     $("#your-lists").hide();
     $("#inside-list").show();
+    $("#movies-in-list").attr("name", foundId);
     
     $.get("/api/list/"+foundId)
     .then(fillList)

@@ -15,7 +15,9 @@ $("#search-bar").keypress(function(e) {
 $("#show-search-btn").click(function(){
     $(this).addClass("selected-btn");
     $("#show-list-btn").removeClass("selected-btn");
+    $("#show-shared-btn").removeClass("selected-btn");
     $("#movie-list").hide();
+    $("#shared-list").hide();
     $("#search-list").show();
 });
 
@@ -23,9 +25,22 @@ $("#show-search-btn").click(function(){
 $("#show-list-btn").click(function(){
     $(this).addClass("selected-btn");
     $("#show-search-btn").removeClass("selected-btn");
+    $("#show-shared-btn").removeClass("selected-btn");
     $("#search-list").hide();
+    $("#shared-list").hide();
     $("#movie-list").show();
 });
+
+// Shared list selection
+$("#show-shared-btn").click(function(){
+    $(this).addClass("selected-btn");
+    $("#show-list-btn").removeClass("selected-btn");
+    $("#show-search-btn").removeClass("selected-btn");
+    $("#search-list").hide();
+    $("#movie-list").hide();
+    $("#shared-list").show();
+});
+
 
 // Page numeration buttons
 $(".pages").on("click", "div", function(){
@@ -50,6 +65,7 @@ function ajaxCall(){
     $("#movies-in-list").empty();
     $("#your-lists").show();
     $("#movie-list").hide();
+    $("#shared-list").hide();
     $("#search-list").show();
     
     $("#found-movies").empty(); // Clear the list of movies that are displayed
@@ -57,6 +73,7 @@ function ajaxCall(){
     $("#error-message").empty();
     $("#show-search-btn").addClass("selected-btn");
     $("#show-list-btn").removeClass("selected-btn");
+    $("#show-shared-btn").removeClass("selected-btn");
     
     // Start loader
     $("#search-loader").show();

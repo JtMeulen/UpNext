@@ -28,12 +28,26 @@ html, body {
     position: relative;
 }
 
+button:hover {
+  cursor: pointer;
+  background: #818996;
+}
+
+button:focus, button:active {
+  outline: none;
+}
+
+.button-active {
+  background: #818996;
+}
 
 /******************/
 /*     LOADER     */
 /******************/
 
 .loader {
+  position: absolute;
+  margin: 50% 50%;
   border: 15px solid grey;
   border-color: white #081e44 grey #081e44;
   border-radius: 50%;

@@ -156,29 +156,31 @@
     transform: scale(1.1);
 }
 
-#create-list-btn, #list-name-input {
+.small-input-btn, .small-input-field {
     font-size: 14px;
     font-family: 'Merriweather Sans', sans-serif;
     border: none;
     height: 20px;
 }
 
-#list-name-input {
+.small-input-field {
+    margin-left: 15px;
     padding-left: 10px;
     width: 300px;
 }
 
-#create-list-btn {
+.small-input-btn {
     margin-left: 15px;
     width: 60px;
 }
 
-#back-to-lists {
+.medium-btn {
     font-size: 14px;
     font-family: 'Merriweather Sans', sans-serif;
     border: none;
     height: 20px;
     margin-left: 15px;
+    margin-bottom: 10px;
     width: 150px;
 }
 
