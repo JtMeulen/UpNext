@@ -184,8 +184,26 @@
     width: 150px;
 }
 
-/* Found listst popup */
+/* Progress Bar */
+.progress-bar {
+    width: 500px;
+    border: 2px solid grey;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
 
+.current_progress {
+    height: 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.complete {
+    background-color: #8bea7c;
+}
+
+
+/* Found listst popup */
 #found-lists-popup {
     padding-left: 0;
 }

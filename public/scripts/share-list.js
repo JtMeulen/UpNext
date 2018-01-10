@@ -70,10 +70,20 @@ function showShared(data){
 }
 
 function appendShared(list){
+     // Create progression bar
+    var seen_total = 0;
+    list.movies.forEach(function(movie){
+        if(movie.seen == "seen"){
+            seen_total++; 
+        }
+    });
+    var seen_progress = (seen_total/list.movies.length) * 100;
+    
     var newList = $('<div class="found-lists" id="'+list._id+'">' +
                         '<div>' +
                             '<p class="list-name">'+list.name+'</p>'+
                             '<p class="list-total">Total movies: <span>'+list.movies.length+'</span></p>'+
+                            '<div class="progress-bar"><div class="current_progress" style="width: '+seen_progress+'%;"></div></div>'+
                         '</div>' +
                     '</div>')
     $("#found-shared-lists").prepend(newList);

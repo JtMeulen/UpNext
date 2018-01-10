@@ -51,13 +51,36 @@ function showLists(data){
 }
 
 function appendList(list){
-    var newList = $('<div class="found-lists" id="'+list._id+'">' +
-                        '<div>' +
-                            '<p class="list-name">'+list.name+'</p>'+
-                            '<p class="list-total">Total movies: <span>'+list.movies.length+'</span></p>'+
-                        '</div>' +
-                        '<span class="delete-list-btn">x</span>'+
-                    '</div>')
+    // Create progression bar
+    var seen_total = 0;
+    list.movies.forEach(function(movie){
+        if(movie.seen == "seen"){
+            seen_total++; 
+        }
+    });
+    var seen_progress = (seen_total/list.movies.length) * 100;
+    
+    // Check if the progress is 100%, if it is add completed class
+    if(seen_progress == 100){
+        var newList = $('<div class="found-lists" id="'+list._id+'">' +
+                            '<div>' +
+                                '<p class="list-name">'+list.name+'</p>'+
+                                '<p class="list-total">Total movies: <span>'+list.movies.length+'</span> - Seen: <span>'+seen_total+'</span></p>'+
+                                '<div class="progress-bar"><div class="current_progress complete" style="width: '+seen_progress+'%;"></div></div>'+
+                            '</div>' +
+                            '<span class="delete-list-btn">x</span>'+
+                        '</div>')
+    } else {
+        var newList = $('<div class="found-lists" id="'+list._id+'">' +
+                            '<div>' +
+                                '<p class="list-name">'+list.name+'</p>'+
+                                '<p class="list-total">Total movies: <span>'+list.movies.length+'</span> - Seen: <span>'+seen_total+'</span></p>'+
+                                '<div class="progress-bar"><div class="current_progress" style="width: '+seen_progress+'%;"></div></div>'+
+                            '</div>' +
+                            '<span class="delete-list-btn">x</span>'+
+                        '</div>')
+    }
+    
     $("#found-lists").prepend(newList);
 }
 
