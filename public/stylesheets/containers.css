@@ -161,6 +161,7 @@
     font-family: 'Merriweather Sans', sans-serif;
     border: none;
     height: 20px;
+    border-radius: 5px;
 }
 
 .small-input-field {
@@ -182,6 +183,7 @@
     margin-left: 15px;
     margin-bottom: 10px;
     width: 150px;
+    border-radius: 5px;
 }
 
 /* Progress Bar */

@@ -1,0 +1,90 @@
+@media screen and (max-width: 1025px){
+    
+    #content-container {
+        width: 70%;
+    }
+    
+    #search-bar {
+        width: 60%;
+    }
+    
+    .delete-movie-btn, .seen-movie-btn {
+        opacity: 1;
+    }
+    
+    .add-btn {
+        opacity: 1;
+    }
+    
+    .delete-list-btn {
+        opacity: 1;
+    }
+    
+}
+
+
+@media screen and (max-width: 800px){
+    #hero h1 {
+        font-size: 4em;
+    }
+    
+    .progress-bar {
+        width: 300px;
+    }
+}
+
+
+@media screen and (max-width: 420px){
+    header ul, header h4 {
+        padding-left: 0;
+        margin: 0;
+    }
+    
+    header h4 {
+        margin-left: 10px;
+    }
+    
+    header ul {
+        margin-right: 10px;
+    }
+    
+    #hero {
+        margin: 25px;
+    }
+    
+    #hero h1 {
+        font-size: 3em;
+    }
+    
+    #content-container {
+        width: 100%;
+    }
+    
+    #display-btns {
+        padding: 0 23px;
+    }
+    
+    .display-btn {
+        margin: 0;
+    }
+    
+    .progress-bar {
+        width: 200px;
+    }
+    
+    .small-input-field {
+        width: 180px;
+    }
+    
+    .medium-btn {
+        width: 120px;
+    }
+    
+    .delete-movie-btn, .seen-movie-btn, .add-btn {
+        font-size: 30px;
+    }
+    
+    .movie-title {
+        font-size: 1.2em;
+    }
+}

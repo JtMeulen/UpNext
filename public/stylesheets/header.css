@@ -47,6 +47,7 @@ header ul li a {
     border: none;
     height: 20px;
     width: 90%;
+    border-radius: 2px;
 }
 
 #auth-routes label {
@@ -56,6 +57,7 @@ header ul li a {
 
 #auth-routes input {
     margin-bottom: 5px;
+    padding-left: 4px;
 }
 
 .user-input-box {
@@ -66,6 +68,6 @@ header ul li a {
     right: 2px;
     top: 0px;
     width: 250px;
-    background: #010a19;
+    background: #262626;
     border: 2px solid black;
 }

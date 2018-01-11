@@ -1,12 +1,17 @@
 /***********************/
 /*     HERO STYLES     */
 /***********************/
+@import url('https://fonts.googleapis.com/css?family=Shrikhand');
+
 #hero {
     margin: 50px;
 }
 
 #hero h1 {
-    font-size: 3em;
+    font-size: 6em;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Shrikhand', cursive;
 }
 
 #movie-search {
@@ -16,6 +21,7 @@
 
 /* Input styles */
 #search-btn, #search-bar {
+    border-radius: 5px;
     font-size: 18px;
     font-family: 'Merriweather Sans', sans-serif;
     border: none;
@@ -41,6 +47,7 @@
 }
 
 .display-btn {
+    border-radius: 5px 5px 0px 0px;
     background: none;
     color: white;
     padding: 3px;
@@ -55,7 +62,7 @@
 }
 
 .display-btn:hover {
-    background: #031738;
+    background: #0b0c0c;
 }
 
 .display-btn:focus, .display-btn:active {
@@ -63,8 +70,9 @@
 }
 
 .selected-btn {
+    border-radius: 5px 5px 0px 0px;
     border-top: solid 2px grey;
     border-right: solid 2px grey;
     border-left: solid 2px grey;
-    border-bottom: solid 2px #081e44;
+    border-bottom: solid 2px #131414;
 }
