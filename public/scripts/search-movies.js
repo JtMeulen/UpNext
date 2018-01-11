@@ -10,6 +10,9 @@ $("#search-bar").keypress(function(e) {
     }
 });
 
+// Open extra search options
+$
+
 // Movie or own list nav bar button logic
 // Search selection
 $("#show-search-btn").click(function(){
@@ -80,9 +83,11 @@ function ajaxCall(){
     // Get URL form input field
     var searchType = $("input[name=searchType]:checked").val();
     var searchValue = $("#search-bar").val();
-    var url = "https://www.omdbapi.com/?s=" + searchValue + "&type=" + searchType + apikey;
-    urlForPages = "https://www.omdbapi.com/?s=" + searchValue + "&type=" + searchType + "&"
+    var searchYear = $("#search-year").val();
+    var url = "https://www.omdbapi.com/?s=" + searchValue + "&y=" + searchYear + "&type=" + searchType + apikey;
+    urlForPages = "https://www.omdbapi.com/?s=" + searchValue + "&y=" + searchYear + "&type=" + searchType + "&"
     $("#search-bar").val('');
+    $("#search-year").val('');
     // AJAX call comes here
     $.get(url)
     .done(showMovies)
