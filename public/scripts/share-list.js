@@ -148,3 +148,21 @@ function fillShared(data){
        
     })
 }
+
+// Deleting a shared list from your view
+
+$("#found-shared-lists").on("click", ".delete-list-btn", function(event){
+    event.stopImmediatePropagation();
+    var id = $(this).parent().attr("id");
+    var username = $(".current_username").attr("name");
+    var data = {username: username};
+    $(this).parent().fadeOut();
+    $.ajax({
+          method: "PUT", 
+          url: "/api/shared/" + id,
+          data: data
+        })
+      .then(function(data){
+          console.log("deleted");
+      })
+})

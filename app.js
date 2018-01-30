@@ -139,6 +139,15 @@ app.put("/api/list/:id/adduser", function(req, res){
     });
 })
 
+// delete a shared list from your view
+app.put("/api/shared/:id", function(req, res){
+    var username = req.body.username;
+    MovieList.update({_id: req.params.id}, {$pull: {"users": username}}, {new:true})
+    .then(function(list){
+        res.status(201).json(list)
+    });
+});
+
 // ********************
 //      AUTH ROUTES
 // ********************
