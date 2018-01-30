@@ -9,17 +9,19 @@ $("#back-to-lists").click(function(){
     $("#your-lists").show();
 })
 
+// On clicking the submit button, this created a new list
 $("#create-list-btn").click(function(){
     var name = $("#list-name-input").val();
     $("#list-name-input").val("");
     $.post("/api/userlist", {name: name})
     .then(function(newlist){
+        alertify.success("Created a new list")
         $("#list-name").val("");
         appendList(newlist);
         appendPopup(newlist)
     })
     .catch(function(){
-        console.log("Couldnt find lists")
+        alertify.error("Database error. Try again")
     });
 });
 
@@ -34,7 +36,7 @@ function callListsApi(){
         $.get("/api/alllists")                                      // LOADS AUTOMATICALLY
         .done(showLists)
         .fail(function(){
-            console.log("COULDNT FIND API")
+            calertify.error("Database error, try again later")
         })
     }
 }
@@ -112,6 +114,6 @@ $("#found-lists").on("click", ".delete-list-btn", function(event){
             url: "/api/list/" + id
         })
       .then(function(data){
-          console.log("deleted")
+          alertify.success("Deleted the list")
       })
 })

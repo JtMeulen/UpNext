@@ -22,13 +22,13 @@ $("#share-with-user").click(function(){
             url: url
         })
         .then(function(newUser){
-            console.log("Added " + newUser);
+            alertify.success("Shared the list with " + username);
         })
         .catch(function(){
-            console.log("Could not add user");
+            alertify.error("Could not add user");
         });  
     } else {
-        alert("Can't use your own username");
+        alertify.error("Can't use your own username");
     }
     
 });
@@ -53,7 +53,7 @@ function callSharedApi(){
         $.get("/api/alllists")                                      // LOADS AUTOMATICALLY
         .done(showShared)
         .fail(function(){
-            console.log("COULDNT FIND API")
+            alertify.error("Database error. Come back later");
         })
     }
 }
@@ -163,6 +163,6 @@ $("#found-shared-lists").on("click", ".delete-list-btn", function(event){
           data: data
         })
       .then(function(data){
-          console.log("deleted");
+          alertify.success("Removed the shared list");
       })
 })

@@ -10,7 +10,7 @@ $(".movies").on("click", "div", function(){
     $.get(url)
     .done(fillPopup)
     .fail(function(){
-        console.log("couldnt do it")
+        alertify.error("Database error. Come back later")
     })
 })
 

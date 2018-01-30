@@ -34,8 +34,7 @@ function fillList(data){
                             '<span name="'+movie.movie_id+'"class="delete-movie-btn">x</span>' +
                         '</div>');
         }
-        $("#movies-in-list").append(newMovie)
-       
+        $("#movies-in-list").append(newMovie);
     })
 }
 
@@ -52,8 +51,11 @@ $("#movies-in-list").on("click", ".delete-movie-btn", function(event){
             data: data,
             method: "PUT"
         })
+        .then(function(){
+            alertify.success("Removed movie from list");
+        })
         .catch(function(){
-            console.log("No list selected")
+            alertify.error("Could not remove from list");
         });
 })
 
@@ -76,12 +78,8 @@ $("#movies-in-list").on("click", ".seen-btn", function(event){
             data: data,
             method: "PUT"
         })
-        .then(function(data){
-            console.log("Updated movie");
-        })
-        .catch(function(){
-            console.log("No list selected")
-        });
+        .then()
+        .catch();
 })
 
 //  Toggle Seen status of movie
@@ -103,10 +101,6 @@ $("#movies-in-list").on("click", ".not-seen-btn", function(event){
             data: data,
             method: "PUT"
         })
-        .then(function(data){
-            console.log("Updated movie");
-        })
-        .catch(function(){
-            console.log("No list selected")
-        });
+        .then()
+        .catch();
 })

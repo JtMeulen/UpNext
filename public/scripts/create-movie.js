@@ -32,10 +32,11 @@ $("#found-movies").on("click", "span", function(event){
             method: "PUT"
         })
         .then(function(){
+            alertify.success("Added movie to the list")
             $("#modal-small").hide();
         })
         .catch(function(){
-            console.log("No list selected")
+            alertify.error("Database error. Try again")
         });
     })
 })

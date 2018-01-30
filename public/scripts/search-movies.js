@@ -58,7 +58,7 @@ $(".pages").on("click", "div", function(){
     .fail(function(){
         $("#search-loader").hide();
         $("#found-movies").empty();
-        $("#error-message").text("Failed to get info..");
+        alertify.error("Failed to get info..");
     })
 })
 
@@ -93,7 +93,7 @@ function ajaxCall(){
     .done(showMovies)
     .fail(function(){
         $("#search-loader").hide();
-        $("#error-message").text("Failed to get info..");
+        alertify.error("Failed to get info..");
     })
 }
 
@@ -101,7 +101,7 @@ function ajaxCall(){
 function showMovies(data){
    if(data.Response == "False"){
        $("#search-loader").hide();
-       $("#error-message").text("No results...");
+       alertify.error("No results...");
    } else {
        $("#search-loader").hide();
        createPageNums(data);
@@ -113,7 +113,7 @@ function showMovies(data){
 function showMoviesNewPage(data){
    if(data.Response == "False"){
        $("#search-loader").hide();
-       $("#error-message").text("No results...");
+       alertify.error("No results...");
    } else {
        $("#search-loader").hide();
        data.Search.forEach(showMovie); //callback to showMovie with each of the items from the array
