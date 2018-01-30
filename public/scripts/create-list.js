@@ -41,10 +41,13 @@ function callListsApi(){
 
 
 function showLists(data){
-    var username = $(".current_username").attr("id");
+    var userId = $(".current_username").attr("id");
+    var username = $(".current_username").attr("name");
     data.forEach(function(list){
-        if(list.author_id == username){
+        if(list.author_id == userId){
             appendList(list);
+            appendPopup(list);
+        } else if(list.users.includes(username)) {
             appendPopup(list);
         }
     })

@@ -48,7 +48,6 @@ function callSharedApi(){
     $("#movies-in-shared").empty();
     $("#shared-lists").show();
     $("#found-shared-lists").empty();
-    // $("#found-lists-popup").empty();  Saved this for if user can append to shared lists
     var username = $(".current_username").attr("id");
     if(username){                                               // ONLY IF USER IS LOGGED IN
         $.get("/api/alllists")                                      // LOADS AUTOMATICALLY
@@ -64,13 +63,12 @@ function showShared(data){
     data.forEach(function(list){
         if(list.users.includes(username)){
             appendShared(list);
-            // appendPopup(list);
         }
     })
 }
 
 function appendShared(list){
-     // Create progression bar
+    // Create progression bar
     var seen_total = 0;
     list.movies.forEach(function(movie){
         if(movie.seen == "seen"){
@@ -79,20 +77,39 @@ function appendShared(list){
     });
     var seen_progress = (seen_total/list.movies.length) * 100;
     
-    var newList = $('<div class="found-lists" id="'+list._id+'">' +
-                        '<div>' +
-                            '<p class="list-name">'+list.name+'</p>'+
-                            '<p class="list-total">Total movies: <span>'+list.movies.length+'</span></p>'+
-                            '<div class="progress-bar"><div class="current_progress" style="width: '+seen_progress+'%;"></div></div>'+
-                        '</div>' +
-                    '</div>')
+    // Check if the progress is 100%, if it is add completed class. Or if there is no movie in the list, make the progbar empty
+    if(seen_total == 0){
+        var newList = $('<div class="found-lists" id="'+list._id+'">' +
+                            '<div>' +
+                                '<p class="list-name">'+list.name+'</p>'+
+                                '<p class="list-total">Total movies: <span>'+list.movies.length+'</span> - Seen: <span>'+seen_total+'</span></p>'+
+                                '<div class="progress-bar"><div class="current_progress" style="width: 0px;"></div></div>'+
+                            '</div>' +
+                            '<span class="delete-list-btn">x</span>'+
+                        '</div>')
+    } else if(seen_progress == 100){
+        var newList = $('<div class="found-lists" id="'+list._id+'">' +
+                            '<div>' +
+                                '<p class="list-name">'+list.name+'</p>'+
+                                '<p class="list-total">Total movies: <span>'+list.movies.length+'</span> - Seen: <span>'+seen_total+'</span></p>'+
+                                '<div class="progress-bar"><div class="current_progress complete" style="width: '+seen_progress+'%;"></div></div>'+
+                            '</div>' +
+                            '<span class="delete-list-btn">x</span>'+
+                        '</div>')
+    } else {
+        var newList = $('<div class="found-lists" id="'+list._id+'">' +
+                            '<div>' +
+                                '<p class="list-name">'+list.name+'</p>'+
+                                '<p class="list-total">Total movies: <span>'+list.movies.length+'</span> - Seen: <span>'+seen_total+'</span></p>'+
+                                '<div class="progress-bar"><div class="current_progress" style="width: '+seen_progress+'%;"></div></div>'+
+                            '</div>' +
+                            '<span class="delete-list-btn">x</span>'+
+                        '</div>')
+    }
+    
     $("#found-shared-lists").prepend(newList);
 }
 
-// function appendPopup(list){
-//     var newList = $('<div class="found-lists-popup" id="'+list._id+'"><p class="list-name-popup">'+list.name+'</p><p class="list-total-popup">Total movies: <span>'+list.movies.length+'</span></div>')
-//     $("#found-lists-popup").prepend(newList);
-// }
 
 // *******************************
 // Open a shared List
